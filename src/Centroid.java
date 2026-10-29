@@ -8,4 +8,18 @@ public class Centroid {
         this.c = c;
         this.name = name;
     }
+    @Override 
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null) return false; 
+        if(!(o instanceof Centroid))return false;
+        
+        Centroid temp = ((Centroid) o);
+        if(temp.r != this.r ){return false;}
+        if(temp.c != this.c ){return false;}
+        if(this.name ==null){
+            return temp.name == null;
+        }
+        return this.name.equals(temp.name);
+    }
 }
