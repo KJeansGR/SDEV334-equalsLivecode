@@ -8,18 +8,33 @@ public class Centroid {
         this.c = c;
         this.name = name;
     }
-    @Override 
-    public boolean equals(Object o){
-        if(this == o) return true;
-        if(o == null) return false; 
-        if(!(o instanceof Centroid))return false;
-        
-        Centroid temp = ((Centroid) o);
-        if(temp.r != this.r ){return false;}
-        if(temp.c != this.c ){return false;}
-        if(this.name ==null){
-            return temp.name == null;
-        }
-        return this.name.equals(temp.name);
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + r;
+        result = prime * result + c;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Centroid other = (Centroid) obj;
+        if (r != other.r)
+            return false;
+        if (c != other.c)
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        return true;
     }
 }
